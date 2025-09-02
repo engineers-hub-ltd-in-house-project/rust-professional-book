@@ -1,0 +1,15 @@
+[package]
+name = "performance-comparison"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[lib]
+name = "performance_comparison"
+path = "src/lib.rs"
+
+[[bench]]
+name = "memory_benchmark"
+harness = false

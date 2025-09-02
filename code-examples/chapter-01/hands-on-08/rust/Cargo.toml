@@ -1,0 +1,10 @@
+[package]
+name = "memory-analysis"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "memory_analysis"
+path = "src/main.rs"

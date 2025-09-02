@@ -1,0 +1,66 @@
+# lefthook configuration
+# 高速な dprint をメインに、専門的な処理は各ツールで補完
+
+pre-commit:
+  parallel: true
+  commands:
+    # 高速な汎用フォーマット (dprint)
+    dprint-format:
+      glob: "*.{md,json,toml,yaml,yml}"
+      run: dprint fmt {staged_files}
+      
+    # Rustは専用フォーマッター
+    rustfmt:
+      glob: "*.rs"
+      run: rustfmt --edition 2021 {staged_files}
+    
+    # 日本語文章の品質チェック
+    textlint:
+      glob: "manuscript/**/*.md"
+      run: npx textlint {staged_files}
+      
+    # その他言語のフォーマット
+    python-black:
+      glob: "*.py"
+      run: black {staged_files}
+      
+    java-format:
+      glob: "*.java"
+      run: google-java-format -i {staged_files}
+      
+    c-format:
+      glob: "*.{c,cpp,h,hpp}"
+      run: clang-format -i {staged_files}
+
+pre-push:
+  parallel: false
+  commands:
+    # Rustコードのビルドテスト
+    rust-check:
+      run: |
+        echo "Checking Rust code..."
+        find code-examples -name "Cargo.toml" -print0 | while IFS= read -r -d '' cargo_file; do
+          dir=$(dirname "$cargo_file")
+          echo "Testing $dir"
+          (cd "$dir" && cargo check --all-targets)
+        done
+    
+    # Markdown リンクチェック
+    link-check:
+      run: |
+        echo "Checking markdown links..."
+        find manuscript -name "*.md" -exec markdown-link-check {} \;
+
+commit-msg:
+  commands:
+    # コミットメッセージの規約チェック
+    commitlint:
+      run: |
+        # 規約: type(scope): description
+        # 例: feat(chapter-01): Add ownership examples
+        if ! grep -qE "^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .+" "$1"; then
+          echo "❌ Commit message must follow conventional format!"
+          echo "Format: type(scope): description"
+          echo "Types: feat, fix, docs, style, refactor, test, chore"
+          exit 1
+        fi

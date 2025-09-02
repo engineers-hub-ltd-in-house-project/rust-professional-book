@@ -1,0 +1,22 @@
+chapter: 1
+title: "なぜ今Rustなのか - 言語史とパフォーマンス理論"
+pages: 50
+exercises: 7
+difficulty: beginner-intermediate
+prerequisites:
+  - "Java/Python/C++いずれかの実務経験3年以上"
+  - "基本的なメモリ管理の知識"
+  - "並行プログラミングの基礎知識"
+learning_objectives:
+  - "Rustを選択する技術的根拠を定量的に説明できる"
+  - "他言語との性能差を実測で確認できる"
+  - "メモリ安全性とパフォーマンスのトレードオフを理解する"
+  - "実務でのRust採用判断基準を確立する"
+status: "planning"
+estimated_hours: 15
+keywords:
+  - "メモリ安全性"
+  - "ゼロコスト抽象化"
+  - "所有権システム"
+  - "パフォーマンス比較"
+  - "技術選択"

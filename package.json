@@ -1,0 +1,35 @@
+{
+  "name": "rust-professional-book",
+  "version": "1.0.0",
+  "description": "Professional Rust Book - Formatting and Linting Tools",
+  "scripts": {
+    "textlint": "textlint 'manuscript/**/*.md'",
+    "textlint:fix": "textlint --fix 'manuscript/**/*.md'",
+    "format:md": "dprint fmt",
+    "format:rust": "find code-examples -name '*.rs' -exec rustfmt {} \\;",
+    "format:all": "./scripts/format-all.sh",
+    "check": "npm run textlint && dprint check",
+    "prepare": "lefthook install"
+  },
+  "devDependencies": {
+    "textlint": "^13.3.3",
+    "textlint-plugin-markdown": "^13.2.0",
+    "textlint-rule-preset-ja-technical-writing": "^8.0.0",
+    "textlint-rule-preset-ja-spacing": "^2.3.0",
+    "textlint-rule-prh": "^5.3.0",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-filter-rule-allowlist": "^4.0.0",
+    "markdown-link-check": "^3.11.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/[username]/rust-professional-book"
+  },
+  "keywords": [
+    "rust",
+    "book",
+    "technical-writing"
+  ],
+  "author": "",
+  "license": "CC-BY-SA-4.0"
+}

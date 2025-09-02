@@ -1,0 +1,6 @@
+[build]
+target = "thumbv6m-none-eabi"
+
+[target.thumbv6m-none-eabi]
+# `elf2uf2-rs -d` を実行するには `probe-run` のインストールが必要です
+# runner = "elf2uf2-rs -d"

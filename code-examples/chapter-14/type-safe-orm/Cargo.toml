@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "app",
+    "query-macro",
+    "xtask",
+]
+resolver = "2"

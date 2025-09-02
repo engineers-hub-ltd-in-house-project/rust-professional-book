@@ -1,0 +1,91 @@
+# prh (proofreading-helper) 用語統一ルール
+version: 1
+
+rules:
+  # Rust 関連用語
+  - expected: Rust
+    patterns:
+      - rust
+      - RUST
+    specs:
+      - from: rust言語
+        to: Rust言語
+      
+  - expected: 所有権
+    patterns:
+      - オーナーシップ
+      - ownership
+      
+  - expected: 借用
+    patterns:
+      - borrow
+      - ボロー
+      - ボロウ
+      
+  - expected: ライフタイム
+    patterns:
+      - lifetime
+      - 生存期間
+      - 生存時間
+      
+  - expected: トレイト
+    patterns:
+      - trait
+      - Trait
+      
+  - expected: クレート
+    patterns:
+      - crate
+      - Crate
+      
+  # 一般的な技術用語
+  - expected: メモリ
+    patterns:
+      - memory
+      - Memory
+      
+  - expected: パフォーマンス
+    patterns:
+      - performance
+      - Performance
+      
+  - expected: ベンチマーク
+    patterns:
+      - benchmark
+      - Benchmark
+      
+  - expected: コンパイル
+    patterns:
+      - compile
+      - Compile
+      
+  - expected: ランタイム
+    patterns:
+      - runtime
+      - Runtime
+      - 実行時
+      
+  # 表記揺れ防止
+  - expected: プログラミング
+    patterns:
+      - programing
+      - Programming
+      
+  - expected: アルゴリズム
+    patterns:
+      - algorithm
+      - Algorithm
+      
+  - expected: データ構造
+    patterns:
+      - data structure
+      - Data Structure
+      
+  - expected: ガベージコレクション
+    patterns:
+      - GC
+      - garbage collection
+      - Garbage Collection
+    specs:
+      - from: GCが
+        to: ガベージコレクションが

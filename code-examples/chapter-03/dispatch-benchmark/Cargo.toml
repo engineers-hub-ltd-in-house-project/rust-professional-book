@@ -1,0 +1,11 @@
+[package]
+name = "dispatch-benchmark"
+version = "0.1.0"
+edition = "2021"
+
+[dev-dependencies]
+criterion = { version = "0.4", features = ["html_reports"] }
+
+[[bench]]
+name = "dispatch"
+harness = false

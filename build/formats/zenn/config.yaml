@@ -1,0 +1,21 @@
+format: "zenn"
+type: "book"
+chapters_per_article: 1
+metadata:
+  title: "プロフェッショナルのためのRust実践理論"
+  topics: ["rust", "systems-programming", "performance", "memory-safety"]
+  published: false
+  price: 0
+  toc_depth: 3
+conversion:
+  split_by: "section"
+  max_length: 50000
+  code_highlighting: true
+  mermaid_support: true
+output:
+  directory: "zenn-articles"
+  filename_pattern: "rust-professional-{chapter:02d}"
+  frontmatter:
+    emoji: "🦀"
+    type: "tech"
+    published: false

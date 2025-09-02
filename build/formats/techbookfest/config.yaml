@@ -1,0 +1,28 @@
+format: "techbookfest"
+target_pages: 150-200
+price: 2500
+volume: 1
+chapters: [1, 2, 3]
+title: "プロフェッショナルのためのRust実践理論 Vol.1"
+subtitle: "理論編"
+cover_style: "modern_professional"
+print_specs:
+  size: "A5"
+  color: "cover_only"
+  binding: "perfect_bound"
+  paper: "cream"
+metadata:
+  isbn: "TBD"
+  publisher: "自費出版"
+  publication_date: "2025-05-01"
+  language: "ja"
+output:
+  format: "pdf"
+  fonts:
+    main: "Noto Sans JP"
+    code: "Source Code Pro"
+  margins:
+    top: 20mm
+    bottom: 20mm
+    left: 15mm
+    right: 15mm

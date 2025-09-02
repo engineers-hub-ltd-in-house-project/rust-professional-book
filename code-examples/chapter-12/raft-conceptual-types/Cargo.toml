@@ -1,0 +1,8 @@
+[package]
+name = "raft-conceptual-types"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# この例では使いませんが、実際のメッセージではシリアライズが必要です
+# serde = { version = "1.0", features = ["derive"] }

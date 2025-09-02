@@ -1,0 +1,8 @@
+[package]
+name = "simd-add-example"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# `std::simd` はまだ不安定な機能のため、nightly Rust が必要です。
+# 安定版Rustを使用する場合は、`packed_simd_2` クレートなどを検討してください。

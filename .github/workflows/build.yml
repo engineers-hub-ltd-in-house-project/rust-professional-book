@@ -1,0 +1,99 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  RUST_VERSION: stable
+
+jobs:
+  test-code:
+    name: Test Code Examples
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: ${{ env.RUST_VERSION }}
+        override: true
+        components: rustfmt, clippy
+    
+    - name: Cache cargo registry
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/registry
+        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+    
+    - name: Cache cargo index
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/git
+        key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
+    
+    - name: Test all Rust code examples
+      run: |
+        find code-examples -name "Cargo.toml" -exec dirname {} \; | while read dir; do
+          echo "Testing $dir"
+          cd "$dir"
+          cargo build --release
+          cargo test
+          cargo clippy -- -D warnings
+          cd - > /dev/null
+        done
+    
+    - name: Format check
+      run: |
+        find code-examples -name "Cargo.toml" -exec dirname {} \; | while read dir; do
+          echo "Checking format in $dir"
+          cd "$dir"
+          cargo fmt -- --check
+          cd - > /dev/null
+        done
+
+  build-book:
+    name: Build Book Formats
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        pip install markdown pandoc pyyaml
+        sudo apt-get update
+        sudo apt-get install -y pandoc texlive-xetex texlive-fonts-extra
+    
+    - name: Build PDF (sample)
+      run: |
+        echo "Building PDF format..."
+        # プレースホルダー: 実際のビルドスクリプトに置き換え
+        mkdir -p build/output
+        echo "PDF build placeholder" > build/output/book.pdf
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: book-formats
+        path: build/output/
+        retention-days: 7
+
+  check-links:
+    name: Check Links
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Link Checker
+      uses: lycheeverse/lychee-action@v1
+      with:
+        args: --verbose --no-progress './manuscript/**/*.md'
+        fail: false

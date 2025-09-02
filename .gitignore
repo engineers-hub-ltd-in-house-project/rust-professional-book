@@ -1,0 +1,47 @@
+# Rust
+/target/
+Cargo.lock
+**/*.rs.bk
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+*~
+
+# Build artifacts
+/build/output/
+*.pdf
+*.epub
+*.mobi
+*.html
+
+# Temporary
+*.tmp
+*.log
+*.cache
+
+# Environment
+.env
+.env.local
+
+# Node (for tooling)
+node_modules/
+package-lock.json
+
+# Python (for scripts)
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Book specific
+*.draft
+*.backup
+.book_cache/
