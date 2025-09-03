@@ -1,3 +1,9 @@
+---
+part: "第III部: システムプログラミング編"
+page_count: 30
+title: "OS概念とRustシステムプログラミング"
+---
+
 # 第7章: OS概念とRustシステムプログラミング
 
 ## 学習目標
@@ -198,7 +204,7 @@ use std::sync::Arc;
 use std::thread;
 use std::time::Duration;
 
-fn main() -> Result<(), Box<dyn std::error.Error>> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let term = Arc::new(AtomicBool::new(false));
     // `term`をクローンして、シグナルハンドラに渡す
     // Ctrl-Cを受け取ったら、`term`をtrueにセットする

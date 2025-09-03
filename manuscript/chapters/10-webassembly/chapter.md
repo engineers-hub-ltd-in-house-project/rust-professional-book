@@ -1,3 +1,9 @@
+---
+part: "第IV部: ドメイン特化応用編"
+page_count: 20
+title: "WebAssemblyとクロスプラットフォーム開発"
+---
+
 # 第10章: WebAssembly とクロスプラットフォーム開発
 
 ## 学習目標
